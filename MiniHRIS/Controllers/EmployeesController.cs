@@ -12,7 +12,6 @@ namespace MiniHRIS.Controllers
     // localhost:xxxx/api/employees
     [ApiController]
     [Route("api/[controller]")]
-    [RequireRole("HR")]
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
@@ -30,6 +29,7 @@ namespace MiniHRIS.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(EmployeeResponseDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [RequireRole("HR")]
         public async Task<IActionResult> CreateEmployee(AddEmployeeDto addEmployeeDto)
         {
             var result = await _employeeService.CreateEmployeeAsync(addEmployeeDto);
@@ -66,6 +66,7 @@ namespace MiniHRIS.Controllers
         [ProducesResponseType(typeof(EmployeeResponseDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [RequireRole("HR")]
         public async Task<IActionResult> UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto)
         {
             var result = await _employeeService.UpdateEmployeeAsync(id, updateEmployeeDto);
@@ -82,6 +83,7 @@ namespace MiniHRIS.Controllers
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [RequireRole("HR")]
         public async Task<IActionResult> DeleteEmployee(Guid id)
         {
             var result = await _employeeService.DeleteEmployeeAsync(id);
@@ -97,6 +99,7 @@ namespace MiniHRIS.Controllers
         // GET: api/employees/search?term={searchTerm}
         [HttpGet("search")]
         [ProducesResponseType(typeof(List<EmployeeResponseDto>), StatusCodes.Status200OK)]
+        [RequireRole("HR")]
         public async Task<IActionResult> SearchEmployees([FromQuery] string term)
         {
             if (string.IsNullOrWhiteSpace(term))

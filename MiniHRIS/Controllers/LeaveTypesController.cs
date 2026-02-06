@@ -10,7 +10,6 @@ namespace MiniHRIS.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    [RequireRole("HR")]
     public class LeaveTypesController : ControllerBase
     {
         private readonly ILeaveTypeService _leaveTypeService;

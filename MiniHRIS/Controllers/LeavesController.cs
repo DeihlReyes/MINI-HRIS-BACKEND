@@ -30,7 +30,6 @@ namespace MiniHRIS.Controllers
         /// Apply for a new leave
         /// </summary>
         [HttpPost]
-        [RequireRole("Employee")]
         [ProducesResponseType(typeof(LeaveResponseDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateLeave(AddLeaveDto dto)

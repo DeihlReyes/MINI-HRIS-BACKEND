@@ -10,7 +10,6 @@ namespace MiniHRIS.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    [RequireRole("HR")]
     public class LeaveAllocationsController : ControllerBase
     {
         private readonly IEmployeeLeaveAllocationService _allocationService;
