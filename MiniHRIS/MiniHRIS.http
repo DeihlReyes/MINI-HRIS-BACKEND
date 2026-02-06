@@ -1,0 +1,6 @@
+@MiniHRIS_HostAddress = http://localhost:5288
+
+GET {{MiniHRIS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
